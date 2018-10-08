@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    position: relative;
+    }
+
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+body {
+    background-color: #1d1917;
+}
+
+/* Utility class */
+.clearfix:: after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+div {
+    /* border: 1px solid red; */
+}
+
+.titleDiv {
+    padding: 5%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    text-align:center;
+}
+
+.titleText {
+    font-family: 'Game of Thrones',Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-style: normal;
+    color:gold;
+    font-size:3em;
+    line-height: 1.2;
+    position: relative;
+}
+p {
+    color:white;
+}
+
+.contentContainer {
+    margin-top:50px;    
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    height: 400px;
+}
+
+.contentLeft, .contentRight {
+    width:50%;
+    height: 100%;
+    float:left;
+    /* display: inline; */
+    border:silver groove 3px;
+}
+
+.leftpic {
+    width:90%;
+    margin:5%;
+    height: auto;
+}
+
+@media screen and (max-width: 640px) {
+    .titleText {
+        font-size:1.5em;
+    }
+
+    .contentContainer {
+        width:320px;
+    }
+}
