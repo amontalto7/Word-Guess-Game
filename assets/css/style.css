@@ -54,9 +54,11 @@ div {
 
 p {
     color:white;
+    margin: 10px;
 }
 
 .contentContainer {
+    font-family: 'Game of Thrones',Georgia, 'Times New Roman', Times, serif;
     margin-top:50px;    
     width:50%;
     margin-left:auto;
@@ -79,6 +81,7 @@ p {
     margin:5%;
     height: auto;
 }
+
 
 footer {
     color: #ffffff; 
