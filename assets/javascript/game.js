@@ -18,7 +18,20 @@ var guessed = [];
 // Create variables that hold references to the places in the HTML where we want to display things.
 // var directionsText = document.getElementById("directions-text");
 // var userChoiceText = document.getElementById("userchoice-text");
-// var computerChoiceText = document.getElementById("computerchoice-text");
-var winsText = document.getElementById("wincount");
+var currentWord = document.getElementById("wordInput");
+var winsText = document.getElementById("winCount");
 
-console.log(winsText);    
+console.log('Before: ', winsText);
+// winsText.textContent = "Testing";
+
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+        // Determines which key was pressed.
+        var userGuess = event.key;
+  
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var activeWord = words[Math.floor(Math.random() * words.length)];
+        currentWord.textContent = activeWord;
+    }  
