@@ -16,12 +16,26 @@ var wins=0;
 var guessed = [];
 
 // Create variables that hold references to the places in the HTML where we want to display things.
-// var directionsText = document.getElementById("directions-text");
-// var userChoiceText = document.getElementById("userchoice-text");
 var currentWord = document.getElementById("wordInput");
 var winsText = document.getElementById("winCount");
 
+var activeWord = words[Math.floor(Math.random() * words.length)];
+var guessedLetters = [];
+var validLetters = activeWord.split("");   // array of letters
+var correctGuesses = 0;
+var incorrectGuesses = 0;
+
+
+for (var i = 0; i < validLetters.length; i++){
+    guessedLetters.push("_");
+}
+
+console.log("Length of word: " + activeWord.length);
+console.log("Correct Guesses: "+correctGuesses);
+console.log("Active word: " + activeWord);
+console.log("letters: "+validLetters);
 console.log('Before: ', winsText);
+
 // winsText.textContent = "Testing";
 
 
@@ -32,6 +46,24 @@ console.log('Before: ', winsText);
         var userGuess = event.key;
   
         // Randomly chooses a choice from the options array. This is the Computer's guess.
-        var activeWord = words[Math.floor(Math.random() * words.length)];
-        currentWord.textContent = activeWord;
-    }  
+        console.log();
+        console.log(activeWord);
+        // guessedLetters.push(list(activeWord));
+        // for (var i = 0 ; i <)
+
+
+        currentWord.textContent = guessedLetters.join("");
+        // currentWord.innerHTML = "<h1>"+activeWord+"</h1>";
+
+        if (activeWord.includes(userGuess)){
+            correctGuesses++;
+            
+            guessedLetters[validLetters.indexOf(userGuess)] = userGuess;        
+            currentWord.textContent = guessedLetters.join("");
+  
+        } else {
+            incorrectGuesses++;
+        }
+
+    }
+    

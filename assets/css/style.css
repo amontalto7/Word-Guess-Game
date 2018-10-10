@@ -62,12 +62,13 @@ p {
     margin-top:5px;
     margin-bottom:5px;
     padding-left: 10px;
+    letter-spacing: 1em;
 }
 
 .contentContainer {
     font-family: Georgia, 'Times New Roman', Times, 'Game of Thrones', serif;
     margin-top:50px;    
-    width:50%;
+    width:60%;
     margin-left:auto;
     margin-right:auto;
     height: 400px;
