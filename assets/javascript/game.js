@@ -30,10 +30,15 @@ for (var i = 0; i < validLetters.length; i++){
     guessedLetters.push("_");
 }
 
+// Print empty "word" to the screen
+currentWord.textContent = guessedLetters.join("");
+winsText.textContent = wins;
+
+
 console.log("Length of word: " + activeWord.length);
 console.log("Correct Guesses: "+correctGuesses);
 console.log("Active word: " + activeWord);
-console.log("letters: "+validLetters);
+console.log("letters: "+ validLetters);
 console.log('Before: ', winsText);
 
 // winsText.textContent = "Testing";
@@ -48,19 +53,19 @@ console.log('Before: ', winsText);
         // Randomly chooses a choice from the options array. This is the Computer's guess.
         console.log();
         console.log(activeWord);
-        // guessedLetters.push(list(activeWord));
-        // for (var i = 0 ; i <)
-
-
-        currentWord.textContent = guessedLetters.join("");
-        // currentWord.innerHTML = "<h1>"+activeWord+"</h1>";
 
         if (activeWord.includes(userGuess)){
-            correctGuesses++;
-            
+            correctGuesses++;            
             guessedLetters[validLetters.indexOf(userGuess)] = userGuess;        
             currentWord.textContent = guessedLetters.join("");
-  
+            
+            if (correctGuesses === validLetters.length){
+                wins++;
+                winsText.textContent = wins;
+                correctGuesses = 0;
+                
+            }
+
         } else {
             incorrectGuesses++;
         }
