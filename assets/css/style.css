@@ -59,14 +59,15 @@ p {
 
 #wordInput {
     font-size: 2em;
-    margin-top:5px;
-    margin-bottom:5px;
+    margin-top:10px;
+    margin-bottom:10px;
     padding-left: 10px;
     letter-spacing: 1em;
 }
 
 .contentContainer {
     font-family: Georgia, 'Times New Roman', Times, 'Game of Thrones', serif;
+    font-size: 1.5em;
     margin-top:50px;    
     width:60%;
     margin-left:auto;
