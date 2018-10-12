@@ -57,6 +57,10 @@ p {
     margin: 10px;
 }
 
+span {
+    color:white;
+}
+
 #wordInput {
     font-size: 2em;
     margin-top:10px;
@@ -69,7 +73,7 @@ p {
     font-family: Georgia, 'Times New Roman', Times, 'Game of Thrones', serif;
     font-size: 1.5em;
     margin-top:50px;    
-    width:60%;
+    width:70%;
     margin-left:auto;
     margin-right:auto;
     height: 400px;
@@ -84,6 +88,11 @@ p {
     /* display: inline; */
     border:silver groove 3px;
 }
+
+.belowWord {
+    margin-top: 40px;
+}
+
 
 .leftpic {
     width:90%;

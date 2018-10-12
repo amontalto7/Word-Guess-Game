@@ -1,14 +1,4 @@
 
-// Create an array of words
-var words = [
-    "winter",
-    "throne",
-    "sword",
-    "king",
-    "dragon",
-    "fire",
-    "ice",
-    "castle"];
 
     function populateWord(activeWord){
         //clear arrays if there is anything inside them
@@ -17,8 +7,7 @@ var words = [
     
         // set validLetters array - populate it with an array of letters that make up newWord
         validLetters = activeWord.split("");   // array of letters
-        console.log ("VALIDLETTERS: "+ validLetters);
-    
+        
         // populate guessedLetters array with an underscore for each letter 
         for (var i = 0; i < validLetters.length; i++){
             guessedLetters.push("_");
@@ -28,28 +17,16 @@ var words = [
         // Print empty "word" to the screen
         currentWord.textContent = guessedLetters.join("");
         winsText.textContent = wins;
+        guessesText.textContent = guessesLeft;
     
     }
     
-
-
-
 // Create variables that hold references to the places in the HTML where we want to display things.
 var currentWord = document.getElementById("wordInput");
 var winsText = document.getElementById("winCount");
-    
-//declare Word object
-var myWord = {
-    newWord: "",
-    
-    // method to generate a new word
-    generate: function() {
-        // Get a random word and store it to the activeWord variable
-        this.newWord = words[Math.floor(Math.random() * words.length)];
-        return this.newWord;
-    }   
- 
-}
+var guessesText = document.getElementById("guessesLeft");
+var leftImage = document.getElementsByClassName("leftpic");
+
 
 // Create variable to store wins
 var wins=0;
@@ -58,20 +35,53 @@ var wins=0;
 var guessedLetters = [];
 var validLetters = [];
 var correctGuesses = 0;
-var incorrectGuesses = 0;
+var guessesLeft = 5;
+
+
+//declare Word object
+var myWord = {
+    newWord: "",
+    // Create an array of words
+
+    words : [
+    "winter",
+    "throne",
+    "sword",
+    "king",
+    "dragon",
+    "fire",
+    "ice",
+    "castle"],
+
+    
+    // method to generate a new word
+    generate: function() {
+        // Get a random word and store it to the activeWord variable
+        this.newWord = this.words[Math.floor(Math.random() * this.words.length)];
+        guessesLeft = 5;
+        return this.newWord;
+    }   
+ 
+}
 
 var activeWord = myWord.generate();
     console.log ("ACTIVEWORD: "+ activeWord);
 
 populateWord(activeWord);
 
+// populate Guesses Remaining field
+
+// commenting out below few lines- this was an experiment that partly works but is more complicated than it needs to be
+// var newSpan = document.createElement("span");
+// var spanNode = document.createTextNode(guessesLeft);
+// newSpan.appendChild(spanNode);
+
+guessesText.textContent = guessesLeft;
+
+
 
 console.log("word: " +activeWord);
 
-
-console.log("Length of word: " + activeWord.length);
-console.log("Correct Guesses: "+correctGuesses);
-console.log('Before: ', winsText);
 
 // winsText.textContent = "Testing";
 
@@ -83,7 +93,6 @@ console.log('Before: ', winsText);
         var userGuess = event.key;
   
         // Randomly chooses a choice from the options array. This is the Computer's guess.
-        console.log();
         console.log(activeWord);
 
         if ((activeWord).includes(userGuess)){
@@ -100,8 +109,15 @@ console.log('Before: ', winsText);
             }
 
         } else {
-            incorrectGuesses++;
+            guessesLeft--;
+            guessesText.textContent = guessesLeft;
+            if (guessesLeft === 0) {
+                leftImage.src = "assets/images/youlose.jpg";
+                var audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/mp3/rains_of_castamere.mp3");
+                audioElement.play();
+            
+            }
         }
-
     }
     

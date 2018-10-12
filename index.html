@@ -28,24 +28,24 @@
       <img class = "leftpic" src="assets/images/got_hang.jpg" alt="hangman">
     </div>
 
-    <div class="contentRight">
-      <p>Press any key to get started!</p>
+    <div class="flexcontainer contentRight">
+      <div>
+        <p>Press any key to get started!</p>
       
-      <p>Wins: <span id="winCount"><p></p></span></p>
+        <p>Wins: <span id="winCount"><p></p></span></p>
 
-      <p>Current word</p>
-    
+        <p>Current word</p>
+      </div>
       <div><p id="wordInput"></p></div>
     
-      <p>Number of guesses remaining:</p>
+      <div class = "belowWord">
 
-      <p>5</p>
+        <div><p>Guesses remaining: <span id="guessesLeft"></span></p></div>
 
-      <p>Letters already guessed</p>
-      <p id="guessedLetters"></p>
-
+        <p>Letters already guessed</p>
+        <p id="guessedLetters"></p>
+      </div>
     </div>
-
 
  
  
