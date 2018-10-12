@@ -25,7 +25,13 @@
 var currentWord = document.getElementById("wordInput");
 var winsText = document.getElementById("winCount");
 var guessesText = document.getElementById("guessesLeft");
-var leftImage = document.getElementsByClassName("leftpic");
+var leftImage = document.getElementById("imgLeft");
+var guessedLettersText = document.getElementById("pGuessedLetters");
+var audioElement = document.createElement("audio");
+var stopButton = document.getElementById("btnStop");
+
+
+console.log(guessedLettersText);
 
 
 // Create variable to store wins
@@ -37,6 +43,11 @@ var validLetters = [];
 var correctGuesses = 0;
 var guessesLeft = 5;
 
+
+// check if alpha
+var isAlpha = function(ch){
+    return /^[A-Z]$/i.test(ch);
+}
 
 //declare Word object
 var myWord = {
@@ -69,6 +80,17 @@ var activeWord = myWord.generate();
 
 populateWord(activeWord);
 
+function resetWord(){
+    guessesLeft = 5;
+    correctGuesses = 0;
+    activeWord = myWord.generate();
+    populateWord(activeWord);
+    guessesText.textContent = guessesLeft;
+    guessedLettersText.textContent = "";
+}
+
+
+
 // populate Guesses Remaining field
 
 // commenting out below few lines- this was an experiment that partly works but is more complicated than it needs to be
@@ -78,45 +100,59 @@ populateWord(activeWord);
 
 guessesText.textContent = guessesLeft;
 
-
+resetWord();
 
 console.log("word: " +activeWord);
-
-
-// winsText.textContent = "Testing";
+    // click event for stop button
+    stopButton.onclick = function(event) {
+        audioElement.pause();
+    } 
 
 
     // This function is run whenever the user presses a key.
     document.onkeyup = function(event) {
 
+
         // Determines which key was pressed.
         var userGuess = event.key;
-  
-        // Randomly chooses a choice from the options array. This is the Computer's guess.
-        console.log(activeWord);
 
-        if ((activeWord).includes(userGuess)){
-            correctGuesses++;            
-            guessedLetters[(validLetters).indexOf(userGuess)] = userGuess;        
-            currentWord.textContent = guessedLetters.join("");
-            
-            if (correctGuesses === (validLetters).length){
-                wins++;
-                winsText.textContent = wins;
-                correctGuesses = 0;
-                activeWord = myWord.generate();
-                populateWord(activeWord);
-            }
+        // check if it's a letter
+        if (isAlpha(userGuess)){
+        
+            guessedLettersText.append(userGuess + " ");
 
-        } else {
-            guessesLeft--;
-            guessesText.textContent = guessesLeft;
-            if (guessesLeft === 0) {
-                leftImage.src = "assets/images/youlose.jpg";
-                var audioElement = document.createElement("audio");
-                audioElement.setAttribute("src", "assets/mp3/rains_of_castamere.mp3");
-                audioElement.play();
-            
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            console.log(activeWord);
+
+            if ((activeWord).includes(userGuess)){
+                correctGuesses++;     
+                
+                // add foreach check 
+                // validLetters.forEach(validLetters)
+
+
+                guessedLetters[(validLetters).indexOf(userGuess)] = userGuess;        
+                currentWord.textContent = guessedLetters.join("");
+                
+                if (correctGuesses === (validLetters).length){
+                    wins++;
+                    winsText.textContent = wins;
+                    audioElement.setAttribute("src", "assets/mp3/game_of_thrones_beat.mp3");
+                    audioElement.play();
+                    alert("Winter is coming, but not today. You win!");
+                   resetWord();
+                }
+
+            } else {
+                guessesLeft--;
+                guessesText.textContent = guessesLeft;
+                if (guessesLeft === 0) {
+                    leftImage.src="assets/images/youlose.jpg";
+                    audioElement.setAttribute("src", "assets/mp3/rains_of_castamere.mp3");
+                    audioElement.play();
+                    alert ("The night is dark and full of terrors. You lose.");
+                    resetWord();                    
+                }
             }
         }
     }

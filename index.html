@@ -23,14 +23,14 @@
   <div class="clearfix"></div>
 
   <div class="contentContainer">
-  
+    <p>Press any key to get started! <button id="btnStop">&#9632;</button></p>
+    
     <div class="contentLeft">
-      <img class = "leftpic" src="assets/images/got_hang.jpg" alt="hangman">
+      <img id = "imgLeft" src="assets/images/got_hang.jpg" alt="hangman">
     </div>
 
     <div class="flexcontainer contentRight">
       <div>
-        <p>Press any key to get started!</p>
       
         <p>Wins: <span id="winCount"><p></p></span></p>
 
@@ -41,9 +41,10 @@
       <div class = "belowWord">
 
         <div><p>Guesses remaining: <span id="guessesLeft"></span></p></div>
-
-        <p>Letters already guessed</p>
-        <p id="guessedLetters"></p>
+        <br>
+        <p><u>Letters already guessed</u></p>
+        
+        <p id="pGuessedLetters"></p>
       </div>
     </div>
 
