@@ -27,6 +27,7 @@ var winsText = document.getElementById("winCount");
 var guessesText = document.getElementById("guessesLeft");
 var leftImage = document.getElementById("imgLeft");
 var guessedLettersText = document.getElementById("pGuessedLetters");
+var resultsText = document.getElementById("results");
 var audioElement = document.createElement("audio");
 var stopButton = document.getElementById("btnStop");
 
@@ -70,7 +71,7 @@ var myWord = {
         // Get a random word and store it to the activeWord variable
         this.newWord = this.words[Math.floor(Math.random() * this.words.length)];
         guessesLeft = 5;
-        return this.newWord;
+        return this.newWord.toUpperCase();
     }   
  
 }
@@ -118,8 +119,9 @@ console.log("word: " +activeWord);
 
         // check if it's a letter
         if (isAlpha(userGuess)){
-        
-            guessedLettersText.append(userGuess + " ");
+            
+            userGuess = userGuess.toUpperCase();
+            guessedLettersText.append(userGuess + ", ");
 
             // Randomly chooses a choice from the options array. This is the Computer's guess.
             console.log(activeWord);
@@ -137,10 +139,14 @@ console.log("word: " +activeWord);
                 if (correctGuesses === (validLetters).length){
                     wins++;
                     winsText.textContent = wins;
+                    leftImage.src="assets/images/dragonwin.jpg";
                     audioElement.setAttribute("src", "assets/mp3/game_of_thrones_beat.mp3");
                     audioElement.play();
-                    alert("Winter is coming, but not today. You win!");
-                   resetWord();
+                    resultsText.textContent = "Winter is coming, but not today. You win!"; 
+                    setTimeout(function(){ 
+                        resetWord();     
+                    }, 3000);
+                   
                 }
 
             } else {
@@ -150,8 +156,10 @@ console.log("word: " +activeWord);
                     leftImage.src="assets/images/youlose.jpg";
                     audioElement.setAttribute("src", "assets/mp3/rains_of_castamere.mp3");
                     audioElement.play();
-                    alert ("The night is dark and full of terrors. You lose.");
-                    resetWord();                    
+                    resultsText.textContent = "The night is dark and full of terrors. You lose.";
+                    setTimeout(function(){ 
+                        resetWord();
+                    }, 3000);                    
                 }
             }
         }
