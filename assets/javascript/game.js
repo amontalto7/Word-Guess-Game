@@ -96,12 +96,6 @@ function resetWord() {
 
 
 // populate Guesses Remaining field
-
-// commenting out below few lines- this was an experiment that partly works but is more complicated than it needs to be
-// var newSpan = document.createElement("span");
-// var spanNode = document.createTextNode(guessesLeft);
-// newSpan.appendChild(spanNode);
-
 guessesText.textContent = guessesLeft;
 
 resetWord();
