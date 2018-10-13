@@ -9,7 +9,7 @@ html, body {
   }
 
 body {
-    background-color: #1d1917;
+    background-color: #353432;
 }
 
 /* Utility class */
@@ -31,7 +31,7 @@ div {
 }
 
 .titleDiv {
-    padding: 5%;
+    padding: 3%;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -65,19 +65,28 @@ span {
     color:white;
 }
 
+#results {
+    font-size: 1.5em;
+    color: red;
+}
+
 #wordInput {
-    font-size: 2em;
-    margin-top:10px;
-    margin-bottom:10px;
+    font-family: 'Game of Thrones',Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.2em;
+    /* margin-top:10px; */
+    /* margin-bottom:10px; */
     padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     letter-spacing: 1em;
+    border: #bba480 inset 5px;
 }
 
 .contentContainer {
-    font-family: Georgia, 'Times New Roman', Times, 'Game of Thrones', serif;
-    font-size: 1.5em;
+    font-family:'Medula One', cursive, Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.7em;
     /* margin-top:30px;     */
-    width:70%;
+    width:75%;
     margin-left:auto;
     margin-right:auto;
     height: 400px;
@@ -115,6 +124,7 @@ footer {
     padding-top: .5em;
     width: 100%;
     flex-shrink: 0;
+    margin-top: 20px;
 }
 
 .copy {
