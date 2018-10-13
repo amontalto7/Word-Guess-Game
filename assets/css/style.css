@@ -39,6 +39,15 @@ div {
     text-align:center;
 }
 
+/* The animation code */
+@keyframes changecolor {
+    0%   {color:gold;}
+    25%  {color: silver;}
+    50%  {color: white;}
+    100% {color:gold;}
+}
+
+
 .titleText {
     font-family: 'Game of Thrones',Georgia, 'Times New Roman', Times, serif;
     font-weight: normal;
@@ -49,7 +58,9 @@ div {
     word-spacing: .3em;
     position: relative;
     text-shadow: 2px 2px red;
-
+    animation-name: changecolor;
+    animation-duration: 4s;
+    animation-delay: 2s;
 }
 
 button {
